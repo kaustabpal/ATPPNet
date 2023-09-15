@@ -11,6 +11,7 @@ This is a Pytorch-Lightning implementation of the paper "*ATPPNet: Attention bas
 3. [Training](#Training)
 4. [Testing](#Testing)
 5. [Download](#Dwnload)
+6. [Acknowledgment](#Acknowledgment)
 
 
 ## Installation
@@ -134,3 +135,6 @@ if you want to test the model on 5 batches and save the resulting point clouds.
 
 ## Download
 We will soon release the best performing model weights.
+
+## Acknowledgment
+The codebase in this repo has been built on top of the amazing code base of [TCNet](https://github.com/PRBonn/point-cloud-prediction) by Benedikt Mersch, Andres Milioto and Christian Diller et al.
