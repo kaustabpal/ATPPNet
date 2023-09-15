@@ -10,8 +10,7 @@ This is a Pytorch-Lightning implementation of the paper "*ATPPNet: Attention bas
 2. [Data](#Data)
 3. [Training](#Training)
 4. [Testing](#Testing)
-5. [Visualization](#Visualization)
-6. [Download](#Dwnload)
+5. [Download](#Dwnload)
 
 
 ## Installation
