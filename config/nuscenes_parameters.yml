@@ -1,0 +1,103 @@
+EXPERIMENT:
+  ID: ATPPNet # Give your experiment a unique ID which is used in the log
+  SEED: 43
+
+DATA_CONFIG:
+  NS_VERSION: v1.0
+  DATASET_PATH: /scratch/aditya.sharma/NuScenes
+  SAVE_PATH: /scratch/aditya.sharma/nuscenes_70_32x1024/data
+  GENERATE_FILES: False # If true, the data will be pre-processed
+  COMPUTE_MEAN_AND_STD: False # If true, the mean and std of the training data will be computed to use it in MEAN and STD.
+  DATALOADER:
+    NUM_WORKER: 1
+    SHUFFLE: True
+  SPLIT: # Specify the sequences here. We follow the KITTI format.
+    TRAIN:
+      - START: 0
+      - END: 69
+    VAL:
+      - START: 70
+      - END: 84
+    TEST:
+      - START: 85
+      - END: 99
+
+  HEIGHT: 32 # Height of range images
+  WIDTH: 1024 # Width of range images
+  FOV_UP: 10.0 # Depends on the used LiDAR sensor
+  FOV_DOWN: -30.0 # Depends on the used LiDAR sensor
+  MAX_RANGE: 70.0 # Average max value in training set
+  MIN_RANGE: 1.0 # Average min value in training set
+  MEAN:
+    - 10.839 # Range
+    - 0.005 # X
+    - 0.494 # Y
+    - -1.13 # Z
+    - 0 #0.287 # Intensity
+
+  STD:
+    - 9.314 # Range
+    - 11.521 # X
+    - 8.262 # Y
+    - 0.828 # Z
+    - 1 #0.14 # Intensity
+
+MODEL:
+  N_PAST_STEPS: 5  # Number of input range images
+  N_FUTURE_STEPS: 5 # Number of predicted future range images
+  MASK_THRESHOLD: 0.5 # Threshold for valid point mask classification
+  USE:
+    XYZ: False # If true: x,y, and z coordinates will be used as additional input channels
+    INTENSITY: False # If true: intensity will be used as additional input channel
+  CHANNELS: # Number of channels in encoder and decoder, respectively.
+    - 16
+    - 32
+    - 64
+    - 128
+      #- 256
+      #    - 512
+  SKIP_IF_CHANNEL_SIZE: # Adds a skip connection between encoder and decoder at desired channels
+    - 32
+    - 64
+      #- 128
+      #  - 256
+  3D_CHANNELS: # Number of channels in encoder and decoder, respectively.
+    - 256
+      #    - 512
+  SKIP_IF_3D_CHANNEL_SIZE: # Adds a skip connection between encoder and decoder at desired channels
+  #    - 256
+  TEMPORAL_KERNEL_SIZE: # Kernel size along temporal dimension. '2' reduces the size of the temporal dimension by 1, '1' keeps the size.
+    - 2
+      #    - 1
+  CIRCULAR_PADDING: True
+  NORM: batch # batch, group, none, instance
+  N_CHANNELS_PER_GROUP: 16
+
+TRAIN:
+  LR: 0.0004
+  LR_EPOCH: 1
+  LR_DECAY: 0.99
+  MAX_EPOCH: 50
+  BATCH_SIZE: 4
+  BATCH_ACC: 1
+  N_GPUS: 1
+  LOG_EVERY_N_STEPS: 1
+  LOSS_WEIGHT_CHAMFER_DISTANCE: 0.0
+  LOSS_WEIGHT_RANGE_VIEW: 1.0
+  LOSS_WEIGHT_MASK: 1.0
+
+VALIDATION:
+  SELECTED_SEQUENCE_AND_FRAME: # Only log point clouds for selected validation sequence and frame
+    6:
+      - 4
+      - 10
+
+TEST:
+  N_BATCHES_TO_SAVE: -1 # If set to -1 and SAVE_POINT_CLOUDS is true, all batches of the test set will be saved.
+  SAVE_POINT_CLOUDS: False
+  N_DOWNSAMPLED_POINTS_CD: -1 # Can evaluate the CD on downsampled point clouds. Set -1 to evaluate on full point clouds.
+  USE_OBJECT_MASK: False
+  USE_GROUND_MASK: False
+  SELECTED_SEQUENCE_AND_FRAME: # Only log point clouds for selected test sequence and frame.
+    90:
+      - 10
