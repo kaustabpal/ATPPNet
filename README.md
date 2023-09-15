@@ -2,7 +2,7 @@
 This is a Pytorch-Lightning implementation of the paper "*ATPPNet: Attention based Temporal Point cloud Prediction Network*" submitted to **ICRA 2024**.
 
 ![](docs/ICRA_Architecture.png)
-***ATPPNet Architecture.** ATPPNet leverages Conv-LSTM along with channel-wise and spatial attention dually complemented by a 3D-CNN branch for extracting an enhanced spatio-temporal context to recover high quality fidel predictions of future point clouds.*
+**ATPPNet Architecture.** *ATPPNet leverages Conv-LSTM along with channel-wise and spatial attention dually complemented by a 3D-CNN branch for extracting an enhanced spatio-temporal context to recover high quality fidel predictions of future point clouds.*
 
 
 ## Table of Contents
