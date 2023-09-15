@@ -6,16 +6,15 @@ This is a Pytorch-Lightning implementation of the paper "*ATPPNet: Attention bas
 
 
 ## Table of Contents
+1. [Installation](#Installation)
 2. [Data](#Data)
-3. [Installation](#Installation)
-4. [Training](#Training)
-5. [Testing](#Testing)
-6. [Visualization](#Visualization)
-7. [Download](#Dwnload)
-8. [License](#License)
+3. [Training](#Training)
+4. [Testing](#Testing)
+5. [Visualization](#Visualization)
+6. [Download](#Dwnload)
 
 
-### Installation
+## Installation
 
 Clone this repository and run 
 ```bash
@@ -31,7 +30,7 @@ Use the following command to create the conda environment:
 
 Then activate the environment using the command ```conda activate atppnet```
 
-## Data Preparation
+## Data
 ### KITTI
 Download the Kitti Odometry data from the official [website](http://www.cvlibs.net/datasets/kitti/eval_odometry.php).
 
