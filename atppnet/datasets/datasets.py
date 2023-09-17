@@ -8,9 +8,9 @@ import numpy as np
 from torch.utils.data import Dataset, DataLoader
 import lightning.pytorch as pl
 
-from pcf.utils.projection import projection
-from pcf.utils.preprocess_data import prepare_data, compute_mean_and_std
-from pcf.utils.utils import load_files
+from atppnet.utils.projection import projection
+from atppnet.utils.preprocess_data import prepare_data, compute_mean_and_std
+from atppnet.utils.utils import load_files
 
 class KittiOdometryModule(pl.LightningDataModule):
     """A Pytorch Lightning module for KITTI Odometry"""

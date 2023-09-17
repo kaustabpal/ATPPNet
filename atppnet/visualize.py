@@ -4,7 +4,7 @@
 import os
 import argparse
 
-from pcf.utils.visualization import *
+from atppnet.utils.visualization import *
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser("./visualize.py")

@@ -13,15 +13,15 @@ from lightning.pytorch.callbacks import LearningRateMonitor, ModelCheckpoint
 from lightning.pytorch.callbacks.early_stopping import EarlyStopping
 from lightning.pytorch.strategies.ddp import DDPStrategy
 
-from pcf.datasets.datasets import KittiOdometryModule
-from pcf.models.atppnet import ATPPNet
+from atppnet.datasets.datasets import KittiOdometryModule
+from atppnet.models.atppnet import ATPPNet
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser("./test.py")
     parser.add_argument(
         "--model", "-m", type=str, default=None, help="Model to be tested"
     )
-    parser.add_argument("--best", "-b", action="store_true", help="Use best model")
+    parser.add_argument("--last", action="store_true", help="Use last saved model")
     parser.add_argument(
         "--limit_test_batches",
         "-l",
@@ -48,7 +48,7 @@ if __name__ == "__main__":
 
     args, unparsed = parser.parse_known_args()
     # load config file
-    config_filename = "./pcf/runs/" + args.model + "/hparams.yaml"
+    config_filename = "./atppnet/runs/" + args.model + "/hparams.yaml"
     cfg = yaml.safe_load(open(config_filename))
     print("Starting testing model ", cfg["LOG_NAME"])
     """Manually set these"""
@@ -63,10 +63,10 @@ if __name__ == "__main__":
         cfg["DATA_CONFIG"]["SPLIT"]["TRAIN"] = args.sequence
         cfg["DATA_CONFIG"]["SPLIT"]["VAL"] = args.sequence
 
-    seed = time.time()
-    random.seed(seed)
-    cfg["SEED"] = seed
-    print("Random seed is ", cfg["SEED"])
+    #seed = time.time()
+    #random.seed(seed)
+    #cfg["SEED"] = seed
+    #print("Random seed is ", cfg["SEED"])
 
     ###### Dataset
     data = KittiOdometryModule(cfg)
@@ -75,10 +75,10 @@ if __name__ == "__main__":
     print("data setup done")
 
     ###### Load checkpoint
-    if args.best:
-        checkpoint_path = "./pcf/runs/" + args.model + "/checkpoints/min_val_loss.ckpt"
+    if args.last:
+        checkpoint_path = "./atppnet/runs/" + args.model + "/checkpoints/last.ckpt"
     else:
-        checkpoint_path = "./pcf/runs/" + args.model + "/checkpoints/last.ckpt"
+        checkpoint_path = "./atppnet/runs/" + args.model + "/checkpoints/min_val_loss.ckpt"
     cfg["TEST"]["USED_CHECKPOINT"] = checkpoint_path
 
     ###### Model

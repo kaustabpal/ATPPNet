@@ -13,8 +13,8 @@ from lightning.pytorch.callbacks.early_stopping import EarlyStopping
 from lightning.pytorch.strategies.ddp import DDPStrategy
 import subprocess
 
-from pcf.datasets.datasets import KittiOdometryModule
-from pcf.models.atppnet import ATPPNet
+from atppnet.datasets.datasets import KittiOdometryModule
+from atppnet.models.atppnet import ATPPNet
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser("./train.py")
@@ -68,8 +68,8 @@ if __name__ == "__main__":
     model_path = args.resume if args.resume else args.weights
     if model_path:
         ###### Load config and update parameters
-        checkpoint_path = "./pcf/runs/" + model_path + "/checkpoints/min_val_loss.ckpt"
-        config_filename = "./pcf/runs/" + model_path + "/hparams.yaml"
+        checkpoint_path = "./atppnet/runs/" + model_path + "/checkpoints/min_val_loss.ckpt"
+        config_filename = "./atppnet/runs/" + model_path + "/hparams.yaml"
         cfg = yaml.safe_load(open(config_filename))
 
         if args.weights and not args.comment:
@@ -110,7 +110,7 @@ if __name__ == "__main__":
             cfg["EXPERIMENT"]["ID"] = args.comment
         cfg["LOG_NAME"] = cfg["EXPERIMENT"]["ID"] + "_" + time.strftime("%Y%m%d_%H%M%S")
         cfg["LOG_DIR"] = os.path.join(
-            "./pcf/runs", cfg["GIT_COMMIT_VERSION"], cfg["LOG_NAME"]
+            "./atppnet/runs", cfg["GIT_COMMIT_VERSION"], cfg["LOG_NAME"]
         )
         if not os.path.exists(cfg["LOG_DIR"]):
             os.makedirs(cfg["LOG_DIR"], exist_ok=True)

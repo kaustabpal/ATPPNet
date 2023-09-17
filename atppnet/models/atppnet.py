@@ -7,9 +7,9 @@ import torch.nn as nn
 import torch.nn.functional as F
 import yaml
 import time
-from pcf.models.base import BasePredictionModel
-from pcf.models.blocks import ConvLSTM, LinearAttentionBlock
-from pcf.models.blocks import DownBlock, UpBlock, CustomConv2d, CNN3D_block
+from atppnet.models.base import BasePredictionModel
+from atppnet.models.blocks import ConvLSTM, LinearAttentionBlock
+from atppnet.models.blocks import DownBlock, UpBlock, CustomConv2d, CNN3D_block
 import random
 import numpy as np
 

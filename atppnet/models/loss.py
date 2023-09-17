@@ -7,7 +7,7 @@ import math
 import random
 
 from pyTorchChamferDistance.chamfer_distance import ChamferDistance
-from pcf.utils.projection import projection
+from atppnet.utils.projection import projection
 
 
 class Loss(nn.Module):

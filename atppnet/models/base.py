@@ -9,9 +9,9 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import lightning.pytorch as pl
-from pcf.models.loss import Loss
-from pcf.utils.projection import projection
-from pcf.utils.logger import log_point_clouds, save_range_and_mask, save_point_clouds
+from atppnet.models.loss import Loss
+from atppnet.utils.projection import projection
+from atppnet.utils.logger import log_point_clouds, save_range_and_mask, save_point_clouds
 
 class BasePredictionModel(pl.LightningModule):
     """Pytorch Lightning base model for point cloud prediction"""
