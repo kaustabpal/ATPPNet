@@ -13,8 +13,8 @@ from lightning.pytorch.callbacks.early_stopping import EarlyStopping
 from lightning.pytorch.strategies.ddp import DDPStrategy
 import subprocess
 
-from pcf.datasets.datasets_nuscenes import NuScenesModule
-from pcf.models.atppnet import ATPPNet
+from atppnet.datasets.datasets_nuscenes import NuScenesModule
+from atppnet.models.atppnet import ATPPNet
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser("./train.py")
