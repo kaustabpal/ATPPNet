@@ -72,7 +72,7 @@ In the parameters filr `config/nuscenes_parameters.yml`, change the value ```DAT
 
 Then run:
 ```bash
-python3 -m atppnet.utils.process_nuscenes
+python -m atppnet.utils.process_nuscenes
 ```
 
 ## Training
@@ -81,7 +81,7 @@ After following the [data preparation](#data-preparation) tutorial, the model ca
 ### KITTI
 The training script can be run by
 ```bash
-python3 -m atppnet.train
+python -m atppnet.train
 ```
 using the parameters defined in ```config/parameters.yaml```. Pass the flag ```--help``` if you want to see more options like resuming from a checkpoint or initializing the weights from a pre-trained model. A directory will be created in ```pcf/runs``` which makes it easier to discriminate between different runs and to avoid overwriting existing logs. The script saves everything like the used config, logs and checkpoints into a path ```pcf/runs/COMMIT/EXPERIMENT_DATE_TIME``` consisting of the current git commit ID (this allows you to checkout at the last git commit used for training), the specified experiment ID (```pcf``` by default) and the date and time.
 
@@ -95,20 +95,20 @@ using the parameters defined in ```config/parameters.yaml```. Pass the flag ```-
 ### nuScenes
 The training script on the nuScenes dataset can be run by
 ```bash
-python3 atppnet.train_nuscenes
+python -m atppnet.train_nuscenes
 ```
 
 ## Testing
 ### KITTI
 Test your model by running
 ```bash
-python atppnet.test -m COMMIT/EXPERIMENT_DATE_TIME
+python -m atppnet.test -m COMMIT/EXPERIMENT_DATE_TIME
 ```
 where ```COMMIT/EXPERIMENT_DATE_TIME``` is the relative path to your model in ```pcf/runs```. *Note*: Use the flag ```-s``` if you want to save the predicted point clouds for visualiztion and ```-l``` if you want to test the model on a smaller amount of data.
 
 *Example*
 ```bash
-python atppnet.test -m 7f1f6d4/pcf_20211106_140014
+python -m atppnet.test -m 7f1f6d4/pcf_20211106_140014
 ```
 or 
 ```bash
@@ -125,11 +125,11 @@ where ```COMMIT/EXPERIMENT_DATE_TIME``` is the relative path to your model in ``
 
 *Example*
 ```bash
-python atppnet.test_nuscenes -m 7f1f6d4/pcf_20211106_140014
+python -m atppnet.test_nuscenes -m 7f1f6d4/pcf_20211106_140014
 ```
 or 
 ```bash
-python atppnet.test_nuscenes -m 7f1f6d4/pcf_20211106_140014 -l 5 -s
+python -m atppnet.test_nuscenes -m 7f1f6d4/pcf_20211106_140014 -l 5 -s
 ```
 if you want to test the model on 5 batches and save the resulting point clouds.
 
