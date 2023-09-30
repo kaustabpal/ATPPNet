@@ -112,14 +112,14 @@ python -m atppnet.test -m 7f1f6d4/pcf_20211106_140014
 ```
 or 
 ```bash
-python atppnet.test -m 7f1f6d4/pcf_20211106_140014 -l 5 -s
+python -m atppnet.test -m 7f1f6d4/pcf_20211106_140014 -l 5 -s
 ```
 if you want to test the model on 5 batches and save the resulting point clouds.
 
 ### nuScenes
 Test your model by running
 ```bash
-python atppnet.test_nuscenes -m COMMIT/EXPERIMENT_DATE_TIME
+python -m atppnet.test_nuscenes -m COMMIT/EXPERIMENT_DATE_TIME
 ```
 where ```COMMIT/EXPERIMENT_DATE_TIME``` is the relative path to your model in ```pcf/runs```. *Note*: Use the flag ```-s``` if you want to save the predicted point clouds for visualiztion and ```-l``` if you want to test the model on a smaller amount of data.
 
