@@ -81,7 +81,7 @@ After following the [data preparation](#data-preparation) tutorial, the model ca
 ### KITTI
 The training script can be run by
 ```bash
-python3 atppnet.train
+python3 -m atppnet.train
 ```
 using the parameters defined in ```config/parameters.yaml```. Pass the flag ```--help``` if you want to see more options like resuming from a checkpoint or initializing the weights from a pre-trained model. A directory will be created in ```pcf/runs``` which makes it easier to discriminate between different runs and to avoid overwriting existing logs. The script saves everything like the used config, logs and checkpoints into a path ```pcf/runs/COMMIT/EXPERIMENT_DATE_TIME``` consisting of the current git commit ID (this allows you to checkout at the last git commit used for training), the specified experiment ID (```pcf``` by default) and the date and time.
 
