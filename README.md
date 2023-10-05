@@ -134,7 +134,10 @@ python -m atppnet.test_nuscenes -m 7f1f6d4/pcf_20211106_140014 -l 5 -s
 if you want to test the model on 5 batches and save the resulting point clouds.
 
 ## Download
-We will soon release the best performing model weights.
+### KITTI
+Please download the model file for KITTI dataset from (here)[https://drive.google.com/file/d/1szIkdw917Fc7WKzZQxiXU1K-lY24CogC/view?usp=sharing]
+### nuScenes
+Please download the model file for nuScenes dataset from (here)[https://drive.google.com/file/d/153DMNjYsGhdHllKRKnru0rc2q3ZtGuq5/view?usp=drive_link]
 
 ## Acknowledgment
 The codebase in this repo has been built on top of the amazing code base of [TCNet](https://github.com/PRBonn/point-cloud-prediction) by Benedikt Mersch, Andres Milioto and Christian Diller et al.
